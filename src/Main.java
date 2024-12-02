@@ -1,64 +1,27 @@
 public class Main {
+
     public static void main(String[] args) {
-        LinkedList waitlist = new LinkedList();
 
-        // Adding regular customers
-        waitlist.addCustomer("Alice", "Party of 2");
-        waitlist.addCustomer("Bob", "Party of 3");
+        System.out.println("0 is " + (isPrime(0) ? "" : "Not") + " a prime number");
+        System.out.println("1 is " + (isPrime(1) ? "" : "Not") + " a prime number");
+        System.out.println("2 is " + (isPrime(2) ? "" : "Not") + " a prime number");
+        System.out.println("3 is " + (isPrime(3) ? "" : "Not") + " a prime number");
 
-        // Adding VIP customers
-        waitlist.addVIPCustomer("VIP Charlie", "Party of 1");
-        waitlist.addVIPCustomer("VIP Dave", "Party of 4");
+        System.out.println("8 is " + (isPrime(8) ? "" : "Not") + " a prime number");
+        System.out.println("17 is " + (isPrime(17) ? "" : "Not") + " a prime number");
 
-        // Adding another regular customer
-        waitlist.addCustomer("Eve", "Party of 2");
-
-        // Displaying the final waitlist
-        waitlist.printList();
-    }
-}
-
-class LinkedList {
-    Node head;
-
-    LinkedList() {
-        this.head = null;
     }
 
-    // Method to add a regular customer to the end of the list
-    void addCustomer(String name, String details) {
-        Node newNode = new Node(name, details);
-        if (head == null) {
-            head = newNode;
-        } else {
-            Node current = head;
-            while (current.next != null) {
-                current = current.next;
-            }
-            current.next = newNode;
+    public static boolean isPrime(int wholeNumber) {
+        if (wholeNumber <= 2) {
+            return (wholeNumber == 2);
         }
-    }
 
-    // Method to add a VIP customer at the beginning of the list
-    void addVIPCustomer(String name, String details) {
-        //Step 1: Create the new node the head
-        Node newNode = new Node(name, details);
-        //Step 2: Point it to the current head of the list.
-        newNode.next = head;
-        // Step 3: Update the Head to the New Node
-        head = newNode;
-    }
-
-    // Method to print the linked list
-    void printList() {
-        Node current = head;
-        while (current != null) {
-            System.out.print(current.name + " (" + current.details + ")");
-            current = current.next;
-            if (current != null) {
-                System.out.print(" -> ");
+        for (int divisor = 2; divisor <= wholeNumber / 2; divisor++) {
+            if (wholeNumber % divisor == 0) {
+                return false;
             }
         }
-        System.out.println(" -> null");
+        return true;
     }
 }
