@@ -2,25 +2,41 @@ public class EvenDigitSum {
 
 	public static void main(String[] args) {
 
-		System.out.println(getEvenDigitSum(922));
+		System.out.println(getEvenDigitSum(123456789));
 
 	}
 
 	public static int getEvenDigitSum(int number) {
-		//return the sum of the even digits within the number
-		if (number < 0) {
-			return -1;
-		}
-		int sum = 0;
-		while (number != 0) {
-			int remainder = number % 10;
-			int afterdivision = number / 10;
-			if (remainder % 2 == 0) {
-				sum += remainder;
+		if (number < 0) {return -1;}
+
+
+		int evenSum = 0;
+		int oddSum = 0;
+
+		for (int i = number; i > 0; i /= 10){
+			int lastDigit = i % 10;
+			if (isEven(lastDigit)) {
+				evenSum += lastDigit;
 			} else {
-				continue;
+				oddSum += lastDigit;
 			}
 		}
-		return sum;
+
+		// == alternative using while loop ==
+		// while (number > 0) {
+		//     int lastDigit = number % 10;
+		//     if (lastDigit % 2 == 0) {
+		//         sum += lastDigit;
+		//     }
+		//     number /= 10;
+		// }
+
+		System.out.println("The sum of odd digits is: " + oddSum);
+		System.out.println("The sum of odd digits is: " + evenSum);
+		return evenSum;
+
+	}
+	public static boolean isEven(int number) {
+		return number % 2 == 0;
 	}
 }

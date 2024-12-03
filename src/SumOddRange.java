@@ -1,6 +1,12 @@
 public class SumOddRange {
 	// write code here
 
+	public static void main(String[] args) {
+
+		System.out.println("The sum of odd numbers is: " + sumOdd(2, 6));
+
+	}
+
 	public static boolean isOdd(int number) {
 		return number > 0 && number % 2 != 0;
 	}
