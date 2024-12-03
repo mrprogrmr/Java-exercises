@@ -8,9 +8,10 @@ public class SharedDigit {
 
 		if (num1 >= 10 && num1 <= 99 && num2 >= 10 && num2 <= 99) {
 			int remainder = 0;
-			while () {			//add condition
+			while (num1 > 9) {			//add condition
 				num1 %= 10;
 				num2 %= 10;
+
 
 			}
 
